@@ -5,88 +5,17 @@
       "price": 3300,
       "image": "images/modal1.jpg",
       "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
-      "availableSizes": ["S", "M", "L"],
-      "availableColors": ["كما في الصورة", "أبيض", "أسود", "أزرق"]
-    },
-    "2": {
-      "name": "مودال 2",
-      "price": 3300,
-      "image": "images/modal2.jpg",
-      "description": "تصميم عملي وأنيق مع خامات عالية الجودة تدوم طويلا",
-      "availableSizes": ["S", "M", "L", "XL"],
-      "availableColors": ["كما في الصورة", "أحمر", "أخضر", "زهري"]
-    },
-    "3": {
-      "name": "مودال 3",
-      "price": 3300,
-      "image": "images/modal3.jpg",
-      "description": "مثالي للأنشطة اليومية مع تصميم يسمح بحرية الحركة",
-      "availableSizes": ["M", "L", "XL"],
-      "availableColors": ["كما في الصورة", "رمادي", "بنفسجي", "أصفر"]
-    },
-    "4": {
-      "name": "مودال 4",
-      "price": 3300,
-      "image": "images/modal4.jpg",
-      "description": "تصميم فاخر مع تفاصيل مميزة للمناسبات الخاصة",
-      "availableSizes": ["S", "L", "XL"],
-      "availableColors": ["كما في الصورة", "أسود", "أبيض", "ذهبي"]
-    },
-    "5": {
-      "name": "مودال 5",
-      "price": 3300,
-      "image": "images/modal5.jpg",
-      "description": "تصميم عملي مع خامات سهلة التنظيف والارتداء",
-      "availableSizes": ["S", "M", "XL"],
-      "availableColors": ["كما في الصورة", "أزرق", "أخضر", "برتقالي"]
-    },
-    "6": {
-      "name": "مودال 6",
-      "price": 3300,
-      "image": "images/modal6.jpg",
-      "description": "تصميم راق مع خامات سهلة التنظيف والارتداء",
-      "availableSizes": ["M", "L"],
-      "availableColors": ["كما في الصورة", "زهري", "بنفسجي", "أحمر"]
-    },
-    "7": {
-      "name": "مودال 7",
-      "price": 3300,
-      "image": "images/modal7.jpg",
-      "description": "تصميم جذاب مع خامات سهلة التنظيف والارتداء",
-      "availableSizes": ["S", "M", "L", "XL"],
-      "availableColors": ["كما في الصورة", "أسود", "رمادي", "أبيض"]
-    },
-    "8": {
-      "name": "مودال 8",
-      "price": 3300,
-      "image": "images/modal8.jpg",
-      "description": "تصميم فاخر مع خامات سهلة التنظيف والارتداء",
-      "availableSizes": ["L", "XL"],
-      "availableColors": ["كما في الصورة", "أزرق", "أخضر", "ذهبي"]
-    },
-    "9": {
-      "name": "مودال 9",
-      "price": 3300,
-      "image": "images/modal9.jpg",
-      "description": "تصميم ملكي بامتياز",
-      "availableSizes": ["S", "XL"],
-      "availableColors": ["كما في الصورة", "أحمر", "ذهبي", "أسود"]
-    },
-    "10": {
-      "name": "مودال 10",
-      "price": 3300,
-      "image": "images/modal10.jpg",
-      "description": "تصميم تركي فاخر",
-      "availableSizes": ["M", "L", "XL"],
-      "availableColors": ["كما في الصورة", "أبيض", "زهري", "بنفسجي"]
-    },
-    "11": {
-      "name": "مودال 11",
-      "price": 3300,
-      "image": "images/modal11.jpg",
-      "description": "تصميم ملكي بامتياز",
-      "availableSizes": ["S", "M", "L"],
-      "availableColors": ["كما في الصورة", "أزرق", "رمادي", "أخضر"]
+      "availableSizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "availableColors": [
+        "كما في الصورة",
+        "أبيض",
+        "أسود",
+        "أزرق"
+      ]
     }
   },
   "DELIVERY_PRICES": {
@@ -334,7 +263,10 @@
   "STORE_INFO": {
     "name": "BEN&KRAB-Shopp",
     "tagline": "متجر أفخم الملابس للأطفال",
-    "phoneNumbers": ["0671466489", "0551102155"]
+    "phoneNumbers": [
+      "0671466489",
+      "0551102155"
+    ]
   },
   "AGE_SIZES": {
     "3": "S",
@@ -362,5 +294,11 @@
     "برتقالي",
     "ذهبي"
   ],
-  "AVAILABLE_SIZES": ["S", "M", "L", "XL", "XXL"]
+  "AVAILABLE_SIZES": [
+    "S",
+    "M",
+    "L",
+    "XL",
+    "XXL"
+  ]
 }
