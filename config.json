@@ -1,29 +1,50 @@
 {
   "PRODUCTS": {
-    "1": {
+    "3": {
       "name": "مودال 1",
-      "price": 5500,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760994079545-modal6.jpg.webp",
-      "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
+      "price": 10000,
+      "image": "https://raw.githubusercontent.com/Ahcene43/Top/main/images/1760997212508-Hft.jpg",
+      "description": " باب عصرية",
+      "availableSizes": [
+        "XXL"
+      ],
+      "availableColors": [
+        "كما في الصورة"
+      ]
+    },
+    "4": {
+      "name": "مودال 2",
+      "price": 3300,
+      "image": "https://raw.githubusercontent.com/Ahcene43/Top/main/images/1760997980536-IMG_20251013_093901_(360_x_640_pixel).jpg",
+      "description": "وصف المنتج الجديد",
       "availableSizes": [
         "S",
         "M",
         "L"
       ],
       "availableColors": [
-        "كما في الصورة"
+        "كما في الصورة",
+        "أبيض",
+        "أسود"
       ]
     },
-    "2": {
-      "name": "مودال 2",
-      "price": 6000,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760994151823-modle6.jpg",
-      "description": "شتوي تركي فاخر",
+    "5": {
+      "name": "مودال 3",
+      "price": 3300,
+      "image": "https://raw.githubusercontent.com/ahcene43/WAW/main/images/modal5.jpg",
+      "description": "وصف المنتج الجديد",
       "availableSizes": [
-        "L"
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
       ],
       "availableColors": [
-        "كما في الصورة"
+        "كما في الصورة",
+        "أبيض",
+        "أسود",
+        "رمادي"
       ]
     }
   },
