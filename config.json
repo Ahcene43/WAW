@@ -1,37 +1,23 @@
 {
   "PRODUCTS": {
-    "3": {
+    "1": {
       "name": "مودال 1",
-      "price": 10000,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760997212508-Hft.jpg",
-      "description": " باب عصرية",
-      "availableSizes": [
-        "XXL"
-      ],
-      "availableColors": [
-        "كما في الصورة"
-      ]
-    },
-    "4": {
-      "name": "مودال 2",
-      "price": 3300,
-      "image": "https://raw.githubusercontent.com/Ahcene43/Top/main/images/1760997980536-IMG_20251013_093901_(360_x_640_pixel).jpg",
-      "description": "وصف المنتج الجديد",
+      "price": 5500,
+      "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760993683654-modal9.jpg.webp",
+      "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
       "availableSizes": [
         "S",
         "M",
         "L"
       ],
       "availableColors": [
-        "كما في الصورة",
-        "أبيض",
-        "أسود"
+        "كما في الصورة"
       ]
     },
-    "5": {
-      "name": "مودال 3",
+    "2": {
+      "name": "مودال 2",
       "price": 3300,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761001850877-Screenshot_20251006-133709_Facebook.jpg",
+      "image": "",
       "description": "وصف المنتج الجديد",
       "availableSizes": [
         "S",
@@ -49,6 +35,10 @@
     }
   },
   "DELIVERY_PRICES": {
+    "00 - إختر الولاية": {
+      "home": 0,
+      "desk": 0
+    },
     "01 - أدرار": {
       "home": 1100,
       "desk": 600
