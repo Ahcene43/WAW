@@ -61,20 +61,6 @@
         "كما في الصورة",
         "أسود"
       ]
-    },
-    "5": {
-      "name": "مودال 5",
-      "price": 3500,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760964442878-IMG_20251013_093957_(360_x_640_pixel).jpg",
-      "description": "بدلة أطفال فائة الجودة",
-      "availableSizes": [
-        "S",
-        "M",
-        "L"
-      ],
-      "availableColors": [
-        "كما في الصورة"
-      ]
     }
   },
   "DELIVERY_PRICES": {
