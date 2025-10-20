@@ -5,7 +5,7 @@ let STORE_CONFIG = {};
 async function loadRemoteConfig() {
   return new Promise(async (resolve) => {
     try {
-      const configUrl = 'https://raw.githubusercontent.com/ahcene43/Inas/main/config.json?t=' + Date.now();
+      const configUrl = 'https://raw.githubusercontent.com/ahcene43/WAW/main/config.json?t=' + Date.now();
       const response = await fetch(configUrl);
       
       if (response.ok) {
