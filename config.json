@@ -17,12 +17,11 @@
       "name": "مودال 2",
       "price": 3300,
       "image": "https://raw.githubusercontent.com/Ahcene43/Inas/main/images/1760955573317-modal12.jpg.webp",
-      "description": "مودال خرافي للأفراح",
+      "description": "مودال خرافي للافراح ",
       "availableSizes": [
         "S",
         "M",
-        "L",
-        "XL"
+        "L"
       ],
       "availableColors": [
         "كما في الصورة",
