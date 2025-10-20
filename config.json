@@ -3,18 +3,14 @@
     "1": {
       "name": "مودال 1",
       "price": 3300,
-      "image": "images/modal1.jpg",
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760944489259-Screenshot_20251006-134027_Facebook.jpg",
       "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
       "availableSizes": [
         "S",
-        "M",
-        "L"
+        "M"
       ],
       "availableColors": [
-        "كما في الصورة",
-        "أبيض",
-        "أسود",
-        "أزرق"
+        "كما في الصورة"
       ]
     }
   },
