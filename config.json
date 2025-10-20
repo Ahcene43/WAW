@@ -12,6 +12,22 @@
       "availableColors": [
         "كما في الصورة"
       ]
+    },
+    "2": {
+      "name": "مودال 2",
+      "price": 3300,
+      "image": "https://raw.githubusercontent.com/Ahcene43/Inas/main/images/1760955573317-modal12.jpg.webp",
+      "description": "مودال خرافي للأفراح",
+      "availableSizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "availableColors": [
+        "كما في الصورة",
+        "أبيض"
+      ]
     }
   },
   "DELIVERY_PRICES": {
