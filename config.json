@@ -17,14 +17,12 @@
     "2": {
       "name": "مودال 2",
       "price": 3300,
-      "image": "",
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761002522371-20251017_223531.jpg",
       "description": "وصف المنتج الجديد",
       "availableSizes": [
-        "S",
         "M",
         "L",
-        "XL",
-        "XXL"
+        "XL"
       ],
       "availableColors": [
         "كما في الصورة",
