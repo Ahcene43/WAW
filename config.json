@@ -11,24 +11,19 @@
         "L"
       ],
       "availableColors": [
-        "كما في الصورة",
-        "أسود",
-        "أخضر"
+        "كما في الصورة"
       ]
     },
     "2": {
       "name": "مودال 2",
       "price": 6000,
       "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760971980292-modal6.jpg",
-      "description": "معطف فاخر ",
+      "description": "شتوي تركي فاخر",
       "availableSizes": [
         "L"
       ],
       "availableColors": [
-        "كما في الصورة",
-        "أبيض",
-        "أسود",
-        "رمادي"
+        "كما في الصورة"
       ]
     }
   },
