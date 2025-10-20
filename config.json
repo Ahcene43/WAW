@@ -2,22 +2,9 @@
   "PRODUCTS": {
     "1": {
       "name": "مودال 1",
-      "price": 3300,
+      "price": 5500,
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760944489259-Screenshot_20251006-134027_Facebook.jpg",
       "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
-      "availableSizes": [
-        "S",
-        "M"
-      ],
-      "availableColors": [
-        "كما في الصورة"
-      ]
-    },
-    "2": {
-      "name": "مودال 2",
-      "price": 3300,
-      "image": "https://raw.githubusercontent.com/Ahcene43/Inas/main/images/1760955573317-modal12.jpg.webp",
-      "description": "مودال خرافي للافراح ",
       "availableSizes": [
         "S",
         "M",
@@ -25,40 +12,23 @@
       ],
       "availableColors": [
         "كما في الصورة",
-        "أبيض"
+        "أسود",
+        "أخضر"
       ]
     },
-    "3": {
-      "name": "مودال 3",
-      "price": 3300,
-      "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760960602487-modal2.jpg",
-      "description": "بدلة يومية جميلة",
+    "2": {
+      "name": "مودال 2",
+      "price": 6000,
+      "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760971980292-modal6.jpg",
+      "description": "معطف فاخر ",
       "availableSizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
+        "L"
       ],
       "availableColors": [
         "كما في الصورة",
         "أبيض",
         "أسود",
         "رمادي"
-      ]
-    },
-    "4": {
-      "name": "مودال 4",
-      "price": 4000,
-      "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760963621175-modal6.jpg",
-      "description": "معطف أنيق وجداب",
-      "availableSizes": [
-        "S",
-        "M"
-      ],
-      "availableColors": [
-        "كما في الصورة",
-        "أسود"
       ]
     }
   },
