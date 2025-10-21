@@ -1,7 +1,7 @@
 {
   "PRODUCTS": {
     "4": {
-      "name": "مودال 4",
+      "name": "مودال 1",
       "price": 3300,
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761041740234-modal5.jpg",
       "description": "مودالي يومي عملي ",
@@ -20,7 +20,7 @@
       ]
     },
     "5": {
-      "name": "مودال 5",
+      "name": "مودال 2",
       "price": 2000,
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761049378640-Screenshot_20251006-133907_Facebook.jpg",
       "description": "في الشباب",
