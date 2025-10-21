@@ -2,22 +2,19 @@
   "PRODUCTS": {
     "14": {
       "name": "مودال 14",
-      "price": 5200,
-      "image": "",
-      "description": "مودال شتوي فاخر",
+      "price": 4200,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761035553086-modal16.jpg",
+      "description": "مودال فاخر",
       "availableSizes": [
         "S",
         "M",
         "L",
-        "XL",
-        "XXL",
         "S1"
       ],
       "availableColors": [
         "كما في الصورة",
-        "أبيض",
-        "أسود",
-        "رمادي"
+        "زهري",
+        "بنفسجي"
       ]
     }
   },
