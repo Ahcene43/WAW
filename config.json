@@ -1,31 +1,22 @@
 {
   "PRODUCTS": {
-    "1": {
-      "name": "مودال 1",
-      "price": 5500,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761039839340-modal6.jpg",
-      "description": "معطف دو تفاصيل راقية تناسب جميع المناسبات",
+    "3": {
+      "name": "مودال 3",
+      "price": 3300,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761041524437-Screenshot_20251006-133654_Facebook.jpg",
+      "description": "الجمال يتكلم",
       "availableSizes": [
-        "M",
-        "L"
-      ],
-      "availableColors": [
-        "كما في الصورة"
-      ]
-    },
-    "2": {
-      "name": "مودال 2",
-      "price": 4000,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761040862390-Screenshot_20251006-134027_Facebook.jpg",
-      "description": "وصف المنتج الجديد",
-      "availableSizes": [
+        "S",
         "M",
         "L",
-        "S"
+        "XL",
+        "XXL"
       ],
       "availableColors": [
         "كما في الصورة",
-        "أزرق"
+        "أبيض",
+        "أسود",
+        "رمادي"
       ]
     }
   },
