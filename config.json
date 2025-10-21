@@ -12,6 +12,21 @@
       "availableColors": [
         "كما في الصورة"
       ]
+    },
+    "2": {
+      "name": "مودال 2",
+      "price": 4000,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761040862390-Screenshot_20251006-134027_Facebook.jpg",
+      "description": "وصف المنتج الجديد",
+      "availableSizes": [
+        "M",
+        "L",
+        "S"
+      ],
+      "availableColors": [
+        "كما في الصورة",
+        "أزرق"
+      ]
     }
   },
   "DELIVERY_PRICES": {
