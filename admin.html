@@ -581,15 +581,6 @@
             border: 2px dashed var(--warning-color);
         }
         
-        .store-selector {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--secondary-color);
-        }
-        
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
@@ -639,22 +630,8 @@
 
     <!-- لوحة التحكم الرئيسية -->
     <div id="adminPanel" class="admin-container">
-        <!-- اختيار المتجر -->
-        <div class="store-selector">
-            <h3><i class="fas fa-store"></i> اختيار المتجر</h3>
-            <div class="form-group">
-                <label>اختر المتجر الحالي:</label>
-                <select id="storeSelector" onchange="switchStore()">
-                    <option value="">-- اختر المتجر --</option>
-                </select>
-            </div>
-            <button class="btn btn-secondary" onclick="addNewStore()">
-                <i class="fas fa-plus"></i> إضافة متجر جديد
-            </button>
-        </div>
-
         <div class="header">
-            <h1><i class="fas fa-cogs"></i> لوحة تحكم المتجر - <span id="currentStoreName">غير محدد</span></h1>
+            <h1><i class="fas fa-cogs"></i> لوحة تحكم المتجر - النسخة المحسنة</h1>
             <p>إدارة جميع إعدادات المتجر من مكان واحد</p>
             <div id="syncStatus" class="sync-status"></div>
         </div>
@@ -670,8 +647,8 @@
                 <div class="value" id="wilayasCount">0</div>
             </div>
             <div class="stat-card">
-                <h4>حالة التوكن</h4>
-                <div class="value" id="tokenStatus">غير مضبوط</div>
+                <h4>التوكنات النشطة</h4>
+                <div class="value" id="tokensCount">0</div>
             </div>
             <div class="stat-card">
                 <h4>آخر تحديث</h4>
@@ -692,6 +669,9 @@
             </button>
             <button class="tab" onclick="switchTab('upload')">
                 <i class="fas fa-cloud-upload-alt"></i> رفع الصور
+            </button>
+            <button class="tab" onclick="switchTab('tokens')">
+                <i class="fas fa-key"></i> إدارة التوكنات
             </button>
             <button class="tab" onclick="switchTab('github')">
                 <i class="fab fa-github"></i> GitHub
@@ -826,10 +806,19 @@
             <div class="section">
                 <h3><i class="fas fa-cloud-upload-alt"></i> رفع الصور إلى GitHub</h3>
                 
-                <div class="form-group">
-                    <label>مسار المجلد:</label>
-                    <input type="text" id="uploadFolderPath" placeholder="images" value="images">
-                    <small style="color: var(--text-light);">مسار المجلد داخل المستودع (مثال: images/products)</small>
+                <div class="upload-config">
+                    <div class="form-group">
+                        <label>اختر المستودع:</label>
+                        <select id="uploadRepoSelect" onchange="updateUploadConfig()">
+                            <option value="">-- اختر المستودع --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>مسار المجلد:</label>
+                        <input type="text" id="uploadFolderPath" placeholder="images" value="images">
+                        <small style="color: var(--text-light);">مسار المجلد داخل المستودع (مثال: images/products)</small>
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -866,14 +855,65 @@
             </div>
         </div>
 
+        <!-- قسم إدارة التوكنات -->
+        <div id="tokens" class="tab-content">
+            <div class="section">
+                <h3><i class="fas fa-key"></i> إدارة توكنات المستودعات</h3>
+                <p style="color: var(--text-light); margin-bottom: 20px;">
+                    هنا يمكنك إدارة التوكنات الفريدة لكل مستودع. كل توكن يسمح بالوصول إلى مستودع محدد على GitHub.
+                </p>
+                
+                <div class="token-management">
+                    <h4 style="color: var(--primary-color); margin-bottom: 15px;">
+                        <i class="fas fa-plus-circle"></i> إضافة توكن جديد
+                    </h4>
+                    <div class="form-group">
+                        <label>اسم المستودع:</label>
+                        <input type="text" id="newTokenRepo" placeholder="اسم المستودع على GitHub">
+                    </div>
+                    <div class="form-group">
+                        <label>التوكن:</label>
+                        <input type="password" id="newTokenValue" placeholder="توكن GitHub الشخصي">
+                    </div>
+                    <div class="form-group">
+                        <label>اسم المستخدم:</label>
+                        <input type="text" id="newTokenUsername" placeholder="اسم المستخدم على GitHub">
+                    </div>
+                    <div class="form-group">
+                        <label>الفرع:</label>
+                        <input type="text" id="newTokenBranch" placeholder="main" value="main">
+                    </div>
+                    <div class="form-group">
+                        <label>المجلد الافتراضي للصور:</label>
+                        <input type="text" id="newTokenDefaultFolder" placeholder="images" value="images">
+                        <small style="color: var(--text-light);">المجلد الافتراضي لرفع الصور في هذا المستودع</small>
+                    </div>
+                    <button class="btn btn-primary" onclick="addNewToken()">
+                        <i class="fas fa-plus"></i> إضافة التوكن
+                    </button>
+                </div>
+                
+                <div class="token-list" id="tokensList">
+                    <!-- سيتم ملؤها بالتوكنات -->
+                </div>
+            </div>
+        </div>
+
         <!-- قسم GitHub -->
         <div id="github" class="tab-content">
             <div class="section">
-                <h3><i class="fab fa-github"></i> إعدادات GitHub للمتجر الحالي</h3>
+                <h3><i class="fab fa-github"></i> إعدادات GitHub</h3>
                 <div class="github-config">
                     <div class="form-group">
+                        <label>اختر مستودع:</label>
+                        <select id="githubRepoSelect" onchange="loadGithubConfigFromToken()">
+                            <option value="">-- اختر مستودع --</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
                         <label>توكن GitHub الشخصي:</label>
-                        <input type="password" id="githubToken" placeholder="أدخل توكن GitHub">
+                        <input type="password" id="githubToken" placeholder="سيتم تعبئته تلقائياً من التوكن المختار">
                         <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; margin-top: 5px;">
                             <p style="font-size: 12px; color: var(--text-light); margin: 5px 0;">
                                 <strong>كيفية الحصول على التوكن:</strong>
@@ -892,22 +932,17 @@
                     
                     <div class="form-group">
                         <label>اسم المستخدم على GitHub:</label>
-                        <input type="text" id="githubUsername" placeholder="ahcene43">
+                        <input type="text" id="githubUsername" placeholder="ahcene43" value="ahcene43">
                     </div>
                     
                     <div class="form-group">
                         <label>اسم المستودع:</label>
-                        <input type="text" id="githubRepo" placeholder="WAW">
+                        <input type="text" id="githubRepo" placeholder="WAW" value="WAW">
                     </div>
                     
                     <div class="form-group">
                         <label>الفرع (Branch):</label>
                         <input type="text" id="githubBranch" placeholder="main" value="main">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>المجلد الافتراضي للصور:</label>
-                        <input type="text" id="githubDefaultFolder" placeholder="images" value="images">
                     </div>
                     
                     <button class="btn btn-secondary" onclick="saveGithubConfig()">
@@ -919,19 +954,16 @@
                 </div>
 
                 <div class="section">
-                    <h3><i class="fas fa-sync-alt"></i> تصحيح روابط الصور</h3>
-                    <p style="color: var(--text-light); margin-bottom: 15px;">
-                        تصحيح جميع روابط الصور لتشير إلى المستودع الحالي تلقائياً.
-                    </p>
-                    <button class="btn btn-warning" onclick="validateAndCorrectImageLinks()">
-                        <i class="fas fa-check-circle"></i> التحقق وتصحيح الروابط
-                    </button>
-                </div>
-
-                <div class="section">
                     <h3><i class="fas fa-sync"></i> مزامنة الإعدادات</h3>
                     
                     <div class="sync-config">
+                        <div class="form-group">
+                            <label>اختر المستودع للمزامنة:</label>
+                            <select id="syncRepoSelect">
+                                <option value="">-- اختر المستودع --</option>
+                            </select>
+                        </div>
+                        
                         <div class="form-group">
                             <label>نوع المزامنة:</label>
                             <select id="syncType">
@@ -992,6 +1024,9 @@
                 <button class="btn btn-secondary" onclick="exportSettings()">
                     <i class="fas fa-file-export"></i> تصدير الإعدادات
                 </button>
+                <button class="btn btn-warning" onclick="showNotification('هذه ميزة تجريبية', 'warning')">
+                    <i class="fas fa-backup"></i> نسخ احتياطي
+                </button>
                 <button class="btn btn-danger" onclick="resetSettings()">
                     <i class="fas fa-redo"></i> إعادة التعيين
                 </button>
@@ -1021,8 +1056,7 @@
         // متغيرات النظام
         let CONFIG = STORE_CONFIG;
         let selectedImageFile = null;
-        let currentStore = '';
-        let stores = JSON.parse(localStorage.getItem('stores') || '{}');
+        let tokens = JSON.parse(localStorage.getItem('github_tokens') || '{}');
         let recentUploads = JSON.parse(localStorage.getItem('recent_uploads') || '[]');
         let currentProductPage = 1;
         const productsPerPage = 3;
@@ -1037,7 +1071,9 @@
                 document.getElementById('passwordProtection').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
                 localStorage.setItem('adminAuthenticated', 'true');
-                loadStores();
+                loadSettings();
+                loadGithubConfig();
+                updateStats();
                 showNotification('تم تسجيل الدخول بنجاح', 'success');
             } else {
                 errorElement.style.display = 'block';
@@ -1054,72 +1090,12 @@
             if (isAuthenticated === 'true') {
                 document.getElementById('passwordProtection').style.display = 'none';
                 document.getElementById('adminPanel').style.display = 'block';
-                loadStores();
-            } else {
-                document.getElementById('passwordProtection').style.display = 'block';
-                document.getElementById('adminPanel').style.display = 'none';
-            }
-        }
-
-        // إدارة المتاجر
-        function loadStores() {
-            const selector = document.getElementById('storeSelector');
-            selector.innerHTML = '<option value="">-- اختر المتجر --</option>';
-            
-            Object.keys(stores).forEach(storeId => {
-                selector.innerHTML += `<option value="${storeId}">${stores[storeId].name || storeId}</option>`;
-            });
-            
-            // إذا كان هناك متاجر، اختر الأول
-            if (Object.keys(stores).length > 0 && !currentStore) {
-                currentStore = Object.keys(stores)[0];
-                selector.value = currentStore;
-                switchStore();
-            }
-        }
-
-        function switchStore() {
-            currentStore = document.getElementById('storeSelector').value;
-            if (currentStore && stores[currentStore]) {
-                const store = stores[currentStore];
-                document.getElementById('currentStoreName').textContent = store.name || currentStore;
-                
-                // تحميل إعدادات المتجر
-                CONFIG = store.config || STORE_CONFIG;
                 loadSettings();
                 loadGithubConfig();
                 updateStats();
-                
-                showNotification(`تم التبديل إلى متجر: ${store.name || currentStore}`, 'success');
-            }
-        }
-
-        function addNewStore() {
-            const storeName = prompt('أدخل اسم المتجر الجديد:');
-            if (storeName) {
-                const storeId = 'store_' + Date.now();
-                stores[storeId] = {
-                    name: storeName,
-                    config: JSON.parse(JSON.stringify(STORE_CONFIG)),
-                    github: {}
-                };
-                
-                localStorage.setItem('stores', JSON.stringify(stores));
-                loadStores();
-                
-                // التبديل إلى المتجر الجديد
-                currentStore = storeId;
-                document.getElementById('storeSelector').value = storeId;
-                switchStore();
-                
-                showNotification('تم إضافة متجر جديد', 'success');
-            }
-        }
-
-        function saveCurrentStore() {
-            if (currentStore && stores[currentStore]) {
-                stores[currentStore].config = CONFIG;
-                localStorage.setItem('stores', JSON.stringify(stores));
+            } else {
+                document.getElementById('passwordProtection').style.display = 'block';
+                document.getElementById('adminPanel').style.display = 'none';
             }
         }
 
@@ -1169,6 +1145,7 @@
 
         // تحميل الإعدادات
         function loadSettings() {
+            CONFIG = loadConfig();
             loadProductsManagement();
             loadWilayasList();
             loadDiscountSettings();
@@ -1176,25 +1153,17 @@
             loadAgeSizes();
             loadAvailableColors();
             loadAvailableSizes();
+            loadTokensList();
             updateStats();
             loadRecentUploads();
+            updateSyncRepoSelect();
         }
 
         // تحديث الإحصائيات
         function updateStats() {
             document.getElementById('productsCount').textContent = Object.keys(CONFIG.PRODUCTS).length;
             document.getElementById('wilayasCount').textContent = Object.keys(CONFIG.DELIVERY_PRICES).length;
-            
-            // حالة التوكن
-            const tokenStatus = document.getElementById('tokenStatus');
-            const githubConfig = getGithubConfig();
-            if (githubConfig.token && githubConfig.username && githubConfig.repo) {
-                tokenStatus.textContent = 'مفعل';
-                tokenStatus.style.color = 'var(--success-color)';
-            } else {
-                tokenStatus.textContent = 'غير مضبوط';
-                tokenStatus.style.color = 'var(--danger-color)';
-            }
+            document.getElementById('tokensCount').textContent = Object.keys(tokens).length;
             
             const lastUpdate = localStorage.getItem('lastUpdate');
             document.getElementById('lastUpdate').textContent = lastUpdate ? new Date(lastUpdate).toLocaleString('ar-EG') : '-';
@@ -1210,6 +1179,22 @@
             });
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
+            
+            // إذا كان التبويب هو التوكنات، قم بتحديث القائمة
+            if (tabName === 'tokens') {
+                loadTokensList();
+            }
+            
+            // إذا كان التبويب هو GitHub، قم بتحديث قائمة المستودعات
+            if (tabName === 'github') {
+                updateRepoSelect();
+                updateSyncRepoSelect();
+            }
+            
+            // إذا كان التبويب هو رفع الصور، قم بتحديث قائمة المستودعات
+            if (tabName === 'upload') {
+                updateUploadRepoSelect();
+            }
         }
 
         // إدارة المنتجات مع التقسيم للصفحات
@@ -1327,7 +1312,6 @@
 
         function updateProductField(id, field, value) {
             CONFIG.PRODUCTS[id][field] = field === 'price' ? parseInt(value) : value;
-            saveCurrentStore();
             showNotification('تم تحديث المنتج', 'success');
         }
 
@@ -1342,7 +1326,6 @@
             } else {
                 CONFIG.PRODUCTS[id].availableSizes = CONFIG.PRODUCTS[id].availableSizes.filter(s => s !== size);
             }
-            saveCurrentStore();
             showNotification('تم تحديث القياسات', 'success');
         }
 
@@ -1357,7 +1340,6 @@
             } else {
                 CONFIG.PRODUCTS[id].availableColors = CONFIG.PRODUCTS[id].availableColors.filter(c => c !== color);
             }
-            saveCurrentStore();
             showNotification('تم تحديث الألوان', 'success');
         }
 
@@ -1366,7 +1348,7 @@
             CONFIG.PRODUCTS[newId] = {
                 name: `مودال ${newId}`,
                 price: 3300,
-                image: `https://raw.githubusercontent.com/ahcene43/WAW/main/images/modal${newId}.jpg`,
+                image: `images/modal${newId}.jpg`,
                 description: "وصف المنتج الجديد",
                 availableSizes: [...CONFIG.AVAILABLE_SIZES],
                 availableColors: CONFIG.AVAILABLE_COLORS.slice(0, 4)
@@ -1376,7 +1358,6 @@
             const totalPages = Math.ceil(Object.keys(CONFIG.PRODUCTS).length / productsPerPage);
             currentProductPage = totalPages;
             
-            saveCurrentStore();
             loadProductsManagement();
             showNotification('تم إضافة منتج جديد', 'success');
         }
@@ -1392,7 +1373,6 @@
                         currentProductPage = totalPages;
                     }
                     
-                    saveCurrentStore();
                     loadProductsManagement();
                     showNotification('تم حذف المنتج', 'success');
                 }
@@ -1428,7 +1408,6 @@
             const wilaya = document.getElementById('wilayaSelect').value;
             CONFIG.DELIVERY_PRICES[wilaya].home = parseInt(document.getElementById('homePrice').value);
             CONFIG.DELIVERY_PRICES[wilaya].desk = parseInt(document.getElementById('deskPrice').value);
-            saveCurrentStore();
             showNotification('تم حفظ سعر التوصيل لـ ' + wilaya, 'success');
         }
 
@@ -1441,7 +1420,6 @@
         function saveDiscountSettings() {
             CONFIG.DISCOUNTS.minQuantityForDiscount = parseInt(document.getElementById('minQuantity').value);
             CONFIG.DISCOUNTS.discountPerItem = parseInt(document.getElementById('discountValue').value);
-            saveCurrentStore();
             showNotification('تم حفظ إعدادات الخصم', 'success');
         }
 
@@ -1456,7 +1434,6 @@
             CONFIG.STORE_INFO.name = document.getElementById('storeName').value;
             CONFIG.STORE_INFO.tagline = document.getElementById('storeTagline').value;
             CONFIG.STORE_INFO.phoneNumbers = document.getElementById('storePhones').value.split(',').map(p => p.trim());
-            saveCurrentStore();
             showNotification('تم حفظ معلومات المتجر', 'success');
         }
 
@@ -1468,7 +1445,6 @@
         function saveAvailableSizes() {
             const sizesInput = document.getElementById('availableSizes').value;
             CONFIG.AVAILABLE_SIZES = sizesInput.split(',').map(size => size.trim()).filter(size => size);
-            saveCurrentStore();
             showNotification('تم حفظ القياسات المتاحة', 'success');
             loadProductsManagement();
             loadAgeSizes();
@@ -1482,7 +1458,6 @@
         function saveAvailableColors() {
             const colorsInput = document.getElementById('availableColors').value;
             CONFIG.AVAILABLE_COLORS = colorsInput.split(',').map(color => color.trim()).filter(color => color);
-            saveCurrentStore();
             showNotification('تم حفظ الألوان المتاحة', 'success');
             loadProductsManagement();
         }
@@ -1523,7 +1498,6 @@
                 const size = CONFIG.AGE_SIZES[oldAge];
                 delete CONFIG.AGE_SIZES[oldAge];
                 CONFIG.AGE_SIZES[newAge] = size;
-                saveCurrentStore();
                 loadAgeSizes();
                 showNotification('تم تحديث العمر', 'success');
             }
@@ -1531,7 +1505,6 @@
 
         function updateAgeSizeValue(age, size) {
             CONFIG.AGE_SIZES[age] = size;
-            saveCurrentStore();
             showNotification('تم تحديث القياس', 'success');
         }
 
@@ -1541,7 +1514,6 @@
             if (maxAge < 12) {
                 const newAge = maxAge + 1;
                 CONFIG.AGE_SIZES[newAge] = CONFIG.AVAILABLE_SIZES[CONFIG.AVAILABLE_SIZES.length - 1] || 'XL';
-                saveCurrentStore();
                 loadAgeSizes();
                 showNotification('تم إضافة عمر جديد', 'success');
             } else {
@@ -1553,7 +1525,6 @@
             if (Object.keys(CONFIG.AGE_SIZES).length > 1) {
                 if (confirm('هل أنت متأكد من حذف هذا العمر؟')) {
                     delete CONFIG.AGE_SIZES[age];
-                    saveCurrentStore();
                     loadAgeSizes();
                     showNotification('تم حذف العمر', 'success');
                 }
@@ -1562,39 +1533,184 @@
             }
         }
 
-        // إعدادات GitHub
-        function loadGithubConfig() {
-            if (currentStore && stores[currentStore]) {
-                const githubConfig = stores[currentStore].github || {};
-                document.getElementById('githubToken').value = githubConfig.token || '';
-                document.getElementById('githubUsername').value = githubConfig.username || '';
-                document.getElementById('githubRepo').value = githubConfig.repo || '';
-                document.getElementById('githubBranch').value = githubConfig.branch || 'main';
-                document.getElementById('githubDefaultFolder').value = githubConfig.defaultFolder || 'images';
-                document.getElementById('uploadFolderPath').value = githubConfig.defaultFolder || 'images';
+        // إدارة التوكنات
+        function loadTokensList() {
+            const container = document.getElementById('tokensList');
+            container.innerHTML = '';
+            
+            if (Object.keys(tokens).length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: var(--text-light);">لا توجد توكنات مضافة بعد</p>';
+                return;
             }
+            
+            Object.keys(tokens).forEach(repo => {
+                const token = tokens[repo];
+                container.innerHTML += `
+                    <div class="token-item">
+                        <div>
+                            <strong>${repo}</strong><br>
+                            <small style="color: var(--text-light);">المستخدم: ${token.username} | الفرع: ${token.branch} | المجلد: ${token.defaultFolder || 'images'}</small>
+                        </div>
+                        <div class="token-actions">
+                            <button class="btn btn-primary small-btn" onclick="useToken('${repo}')">
+                                <i class="fas fa-check"></i> استخدام
+                            </button>
+                            <button class="btn btn-warning small-btn" onclick="editToken('${repo}')">
+                                <i class="fas fa-edit"></i> تعديل
+                            </button>
+                            <button class="btn btn-danger small-btn" onclick="deleteToken('${repo}')">
+                                <i class="fas fa-trash"></i> حذف
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
         }
 
-        function saveGithubConfig() {
-            if (currentStore && stores[currentStore]) {
-                stores[currentStore].github = {
-                    token: document.getElementById('githubToken').value,
-                    username: document.getElementById('githubUsername').value,
-                    repo: document.getElementById('githubRepo').value,
-                    branch: document.getElementById('githubBranch').value,
-                    defaultFolder: document.getElementById('githubDefaultFolder').value
-                };
-                localStorage.setItem('stores', JSON.stringify(stores));
-                showNotification('تم حفظ إعدادات GitHub', 'success');
+        function addNewToken() {
+            const repo = document.getElementById('newTokenRepo').value.trim();
+            const token = document.getElementById('newTokenValue').value.trim();
+            const username = document.getElementById('newTokenUsername').value.trim();
+            const branch = document.getElementById('newTokenBranch').value.trim() || 'main';
+            const defaultFolder = document.getElementById('newTokenDefaultFolder').value.trim() || 'images';
+            
+            if (!repo || !token || !username) {
+                showNotification('يرجى ملء جميع الحقول', 'error');
+                return;
+            }
+            
+            tokens[repo] = {
+                token: token,
+                username: username,
+                branch: branch,
+                defaultFolder: defaultFolder
+            };
+            
+            localStorage.setItem('github_tokens', JSON.stringify(tokens));
+            loadTokensList();
+            updateRepoSelect();
+            updateUploadRepoSelect();
+            updateSyncRepoSelect();
+            
+            // مسح الحقول
+            document.getElementById('newTokenRepo').value = '';
+            document.getElementById('newTokenValue').value = '';
+            document.getElementById('newTokenUsername').value = '';
+            document.getElementById('newTokenBranch').value = 'main';
+            document.getElementById('newTokenDefaultFolder').value = 'images';
+            
+            showNotification('تم إضافة التوكن بنجاح', 'success');
+            updateStats();
+        }
+
+        function useToken(repo) {
+            const token = tokens[repo];
+            document.getElementById('githubToken').value = token.token;
+            document.getElementById('githubUsername').value = token.username;
+            document.getElementById('githubRepo').value = repo;
+            document.getElementById('githubBranch').value = token.branch;
+            
+            // التبديل إلى تبويب GitHub
+            switchTab('github');
+            showNotification(`تم تحميل إعدادات مستودع ${repo}`, 'success');
+        }
+
+        function editToken(repo) {
+            const token = tokens[repo];
+            
+            document.getElementById('newTokenRepo').value = repo;
+            document.getElementById('newTokenValue').value = token.token;
+            document.getElementById('newTokenUsername').value = token.username;
+            document.getElementById('newTokenBranch').value = token.branch;
+            document.getElementById('newTokenDefaultFolder').value = token.defaultFolder || 'images';
+            
+            // حذف التوكن القديم
+            delete tokens[repo];
+            
+            showNotification('يمكنك الآن تعديل التوكن', 'warning');
+        }
+
+        function deleteToken(repo) {
+            if (confirm(`هل أنت متأكد من حذف توكن ${repo}؟`)) {
+                delete tokens[repo];
+                localStorage.setItem('github_tokens', JSON.stringify(tokens));
+                loadTokensList();
+                updateRepoSelect();
+                updateUploadRepoSelect();
+                updateSyncRepoSelect();
+                showNotification('تم حذف التوكن', 'success');
                 updateStats();
             }
         }
 
-        function getGithubConfig() {
-            if (currentStore && stores[currentStore]) {
-                return stores[currentStore].github || {};
+        function updateRepoSelect() {
+            const select = document.getElementById('githubRepoSelect');
+            select.innerHTML = '<option value="">-- اختر مستودع --</option>';
+            
+            Object.keys(tokens).forEach(repo => {
+                select.innerHTML += `<option value="${repo}">${repo}</option>`;
+            });
+        }
+
+        function updateUploadRepoSelect() {
+            const select = document.getElementById('uploadRepoSelect');
+            select.innerHTML = '<option value="">-- اختر المستودع --</option>';
+            
+            Object.keys(tokens).forEach(repo => {
+                select.innerHTML += `<option value="${repo}">${repo}</option>`;
+            });
+        }
+
+        function updateSyncRepoSelect() {
+            const select = document.getElementById('syncRepoSelect');
+            select.innerHTML = '<option value="">-- اختر المستودع --</option>';
+            
+            Object.keys(tokens).forEach(repo => {
+                select.innerHTML += `<option value="${repo}">${repo}</option>`;
+            });
+        }
+
+        function updateUploadConfig() {
+            const repo = document.getElementById('uploadRepoSelect').value;
+            if (repo && tokens[repo]) {
+                const token = tokens[repo];
+                document.getElementById('uploadFolderPath').value = token.defaultFolder || 'images';
             }
-            return {};
+        }
+
+        function loadGithubConfigFromToken() {
+            const repo = document.getElementById('githubRepoSelect').value;
+            if (repo && tokens[repo]) {
+                useToken(repo);
+            }
+        }
+
+        // إعدادات GitHub
+        function loadGithubConfig() {
+            const config = JSON.parse(localStorage.getItem('github_config') || '{}');
+            document.getElementById('githubToken').value = config.token || '';
+            document.getElementById('githubUsername').value = config.username || '';
+            document.getElementById('githubRepo').value = config.repo || '';
+            document.getElementById('githubBranch').value = config.branch || 'main';
+            
+            updateRepoSelect();
+            updateUploadRepoSelect();
+            updateSyncRepoSelect();
+        }
+
+        function saveGithubConfig() {
+            const config = {
+                token: document.getElementById('githubToken').value,
+                username: document.getElementById('githubUsername').value,
+                repo: document.getElementById('githubRepo').value,
+                branch: document.getElementById('githubBranch').value
+            };
+            localStorage.setItem('github_config', JSON.stringify(config));
+            showNotification('تم حفظ إعدادات GitHub', 'success');
+        }
+
+        function getGithubConfig() {
+            return JSON.parse(localStorage.getItem('github_config') || '{}');
         }
 
         // اختبار اتصال GitHub
@@ -1622,22 +1738,6 @@
             }
         }
 
-        // تصحيح روابط الصور
-        function validateAndCorrectImageLinks() {
-            if (validateGithubConfig()) {
-                if (confirm('تم اكتشاف أن بعض الصور من مستودع مختلف. هل تريد تصحيح الروابط تلقائياً؟')) {
-                    if (correctImageLinks()) {
-                        loadProductsManagement();
-                        showNotification('تم تصحيح روابط الصور بنجاح', 'success');
-                    } else {
-                        showNotification('فشل في تصحيح الروابط', 'error');
-                    }
-                }
-            } else {
-                showNotification('جميع روابط الصور تشير إلى المستودع الصحيح', 'success');
-            }
-        }
-
         // رفع الصور إلى GitHub
         function handleImageSelect(event) {
             const file = event.target.files[0];
@@ -1658,13 +1758,19 @@
 
         async function uploadImage() {
             if (!selectedImageFile) {
-                showNotification('Veuillez sélectionner une image d\'abord', 'error');
+                showNotification('يرجى اختيار صورة أولاً', 'error');
                 return;
             }
 
-            const config = getGithubConfig();
-            if (!config.token || !config.username || !config.repo) {
-                showNotification('Veuillez configurer les paramètres GitHub d\'abord', 'error');
+            const repo = document.getElementById('uploadRepoSelect').value;
+            if (!repo) {
+                showNotification('يرجى اختيار مستودع للرفع', 'error');
+                return;
+            }
+
+            const tokenConfig = tokens[repo];
+            if (!tokenConfig) {
+                showNotification('التوكن المحدد غير موجود', 'error');
                 return;
             }
 
@@ -1673,34 +1779,24 @@
             const uploadStatus = document.getElementById('uploadStatus');
             
             uploadButton.disabled = true;
-            uploadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Téléchargement en cours...';
+            uploadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الرفع...';
             
             try {
-                // استخدام FileReader لتحويل الصورة إلى base64
-                const base64Image = await new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = () => resolve(reader.result);
-                    reader.onerror = reject;
-                    reader.readAsDataURL(selectedImageFile);
-                });
-
+                const base64Image = await fileToBase64(selectedImageFile);
                 const path = `${folderPath}/${Date.now()}-${selectedImageFile.name}`;
-                const message = `Ajouter image: ${selectedImageFile.name}`;
+                const message = `Add image: ${selectedImageFile.name}`;
+                const content = base64Image.split(',')[1];
                 
-                // إزالة بادئة base64
-                const base64Content = base64Image.split(',')[1];
-                
-                const response = await fetch(`https://api.github.com/repos/${config.username}/${config.repo}/contents/${path}`, {
+                const response = await fetch(`https://api.github.com/repos/${tokenConfig.username}/${repo}/contents/${path}`, {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${config.token}`,
+                        'Authorization': `token ${tokenConfig.token}`,
                         'Content-Type': 'application/json',
-                        'Accept': 'application/vnd.github.v3+json'
                     },
                     body: JSON.stringify({
                         message: message,
-                        content: base64Content,
-                        branch: config.branch || 'main'
+                        content: content,
+                        branch: tokenConfig.branch
                     })
                 });
                 
@@ -1708,34 +1804,34 @@
                     const result = await response.json();
                     const imageUrl = result.content.download_url;
                     document.getElementById('imageUrl').value = imageUrl;
-                    uploadStatus.textContent = '✅ Image téléchargée avec succès';
+                    uploadStatus.textContent = '✅ تم رفع الصورة بنجاح';
                     uploadStatus.className = 'upload-status success';
                     uploadStatus.style.display = 'block';
                     
                     // حفظ الصورة في قائمة المرفوعات حديثاً
                     addToRecentUploads({
                         url: imageUrl,
-                        repo: config.repo,
+                        repo: repo,
                         folder: folderPath,
                         filename: selectedImageFile.name,
                         timestamp: new Date().toISOString()
                     });
                     
                     copyImageUrl();
-                    showNotification('Image téléchargée avec succès', 'success');
+                    showNotification('تم رفع الصورة بنجاح', 'success');
                 } else {
                     const errorData = await response.json();
-                    throw new Error(errorData.message || 'Échec du téléchargement de l\'image');
+                    throw new Error(errorData.message || 'فشل في رفع الصورة');
                 }
                 
             } catch (error) {
-                uploadStatus.textContent = '❌ Erreur de téléchargement: ' + error.message;
+                uploadStatus.textContent = '❌ خطأ في رفع الصورة: ' + error.message;
                 uploadStatus.className = 'upload-status error';
                 uploadStatus.style.display = 'block';
-                showNotification('Erreur de téléchargement: ' + error.message, 'error');
+                showNotification('خطأ في رفع الصورة: ' + error.message, 'error');
             } finally {
                 uploadButton.disabled = false;
-                uploadButton.innerHTML = '<i class="fas fa-upload"></i> Télécharger l\'image vers GitHub';
+                uploadButton.innerHTML = '<i class="fas fa-upload"></i> رفع الصورة إلى GitHub';
             }
         }
 
@@ -1797,14 +1893,21 @@
 
         // مزامنة الإعدادات مع GitHub
         async function saveAllSettings() {
-            const config = getGithubConfig();
-            if (!config.token || !config.username || !config.repo) {
-                showNotification('يرجى إعداد إعدادات GitHub أولاً', 'error');
+            const repo = document.getElementById('syncRepoSelect').value;
+            if (!repo) {
+                showNotification('يرجى اختيار مستودع للمزامنة', 'error');
+                return;
+            }
+
+            const tokenConfig = tokens[repo];
+            if (!tokenConfig) {
+                showNotification('التوكن المحدد غير موجود', 'error');
                 return;
             }
 
             // حفظ محلي
-            saveCurrentStore();
+            STORE_CONFIG = CONFIG;
+            saveConfig(CONFIG);
             localStorage.setItem('lastUpdate', new Date().toISOString());
             updateStats();
             
@@ -1815,7 +1918,7 @@
                 syncStatus.className = 'sync-status';
                 syncStatus.style.display = 'block';
                 
-                await saveToGitHubWithToken(CONFIG, config);
+                await saveToGitHubWithToken(CONFIG, tokenConfig, repo);
                 
                 syncStatus.textContent = '✅ تم حفظ ومزامنة الإعدادات بنجاح!';
                 syncStatus.className = 'sync-status success';
@@ -1831,17 +1934,22 @@
 
         // تحميل الإعدادات من GitHub
         async function loadFromGitHub() {
-            const config = getGithubConfig();
-            if (!config.token || !config.username || !config.repo) {
-                showNotification('يرجى إعداد إعدادات GitHub أولاً', 'error');
+            const repo = document.getElementById('syncRepoSelect').value;
+            if (!repo) {
+                showNotification('يرجى اختيار مستودع للمزامنة', 'error');
+                return;
+            }
+
+            const tokenConfig = tokens[repo];
+            if (!tokenConfig) {
+                showNotification('التوكن المحدد غير موجود', 'error');
                 return;
             }
 
             try {
-                const success = await loadRemoteConfigWithToken(config);
+                const success = await loadRemoteConfigWithToken(tokenConfig, repo);
                 if (success) {
                     CONFIG = STORE_CONFIG;
-                    saveCurrentStore();
                     loadSettings();
                     showNotification('تم تحميل الإعدادات من GitHub بنجاح!', 'success');
                 } else {
@@ -1872,7 +1980,7 @@
                     try {
                         const importedConfig = JSON.parse(e.target.result);
                         CONFIG = importedConfig;
-                        saveCurrentStore();
+                        saveConfig(CONFIG);
                         loadSettings();
                         showNotification('تم استيراد الإعدادات بنجاح', 'success');
                     } catch (error) {
@@ -1886,8 +1994,9 @@
 
         function resetSettings() {
             if (confirm('⚠️ هل أنت متأكد من إعادة تعيين جميع الإعدادات؟ سيتم فقدان جميع التغييرات.')) {
-                CONFIG = JSON.parse(JSON.stringify(STORE_CONFIG));
-                saveCurrentStore();
+                localStorage.removeItem('storeConfig');
+                CONFIG = STORE_CONFIG;
+                saveConfig(CONFIG);
                 loadSettings();
                 showNotification('تم إعادة التعيين بنجاح', 'success');
             }
@@ -1920,19 +2029,19 @@
         }
 
         // دعم التوكنات في المزامنة
-        async function saveToGitHubWithToken(config, githubConfig) {
+        async function saveToGitHubWithToken(config, tokenConfig, repo) {
             // هذه دالة مساعدة تحتاج إلى تنفيذها في config.js
             if (typeof saveToGitHub === 'function') {
-                return await saveToGitHub(config, githubConfig);
+                return await saveToGitHub(config, tokenConfig, repo);
             } else {
                 throw new Error('دالة المزامنة غير متوفرة');
             }
         }
 
-        async function loadRemoteConfigWithToken(githubConfig) {
+        async function loadRemoteConfigWithToken(tokenConfig, repo) {
             // هذه دالة مساعدة تحتاج إلى تنفيذها في config.js
             if (typeof loadRemoteConfig === 'function') {
-                return await loadRemoteConfig(githubConfig);
+                return await loadRemoteConfig(tokenConfig, repo);
             } else {
                 throw new Error('دالة التحميل غير متوفرة');
             }
