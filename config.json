@@ -3,10 +3,9 @@
     "1": {
       "name": "مودال 1",
       "price": 5500,
-      "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760993683654-modal9.jpg.webp",
-      "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761039839340-modal6.jpg",
+      "description": "معطف دو تفاصيل راقية تناسب جميع المناسبات",
       "availableSizes": [
-        "S",
         "M",
         "L"
       ],
