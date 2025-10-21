@@ -18,6 +18,25 @@
         "أسود",
         "رمادي"
       ]
+    },
+    "4": {
+      "name": "مودال 4",
+      "price": 3300,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761041740234-modal5.jpg",
+      "description": "مودالي يومي عملي ",
+      "availableSizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "availableColors": [
+        "كما في الصورة",
+        "أبيض",
+        "أسود",
+        "رمادي"
+      ]
     }
   },
   "DELIVERY_PRICES": {
