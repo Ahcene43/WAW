@@ -1,20 +1,36 @@
 {
   "PRODUCTS": {
-    "14": {
-      "name": "مودال 14",
-      "price": 4200,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761035553086-modal16.jpg",
-      "description": "مودال فاخر",
+    "1": {
+      "name": "مودال 1",
+      "price": 5500,
+      "image": "https://raw.githubusercontent.com/Ahcene43/store-one/main/images/1760993683654-modal9.jpg.webp",
+      "description": "تصميم مريح وعصري مع تفاصيل راقية تناسب جميع المناسبات",
+      "availableSizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "availableColors": [
+        "كما في الصورة"
+      ]
+    },
+    "2": {
+      "name": "مودال 2",
+      "price": 5000,
+      "image": "images/modal2.jpg",
+      "description": "عراسي",
       "availableSizes": [
         "S",
         "M",
         "L",
-        "S1"
+        "XL",
+        "XXL"
       ],
       "availableColors": [
         "كما في الصورة",
         "زهري",
-        "بنفسجي"
+        "بنفسجي",
+        "برتقالي"
       ]
     }
   },
@@ -257,25 +273,28 @@
     }
   },
   "DISCOUNTS": {
-    "minQuantityForDiscount": 3,
+    "minQuantityForDiscount": 2,
     "discountPerItem": 300
   },
   "STORE_INFO": {
-    "name": "RIHAB12-Shopp",
-    "tagline": "متجر أفخم الملابس ",
+    "name": "Shopping",
+    "tagline": "متجر أفخم الملابس للأطفال",
     "phoneNumbers": [
       "0671466489",
       "0551102155"
     ]
   },
   "AGE_SIZES": {
-    "6": "S1",
-    "7": "S",
-    "8": "M",
+    "3": "S",
+    "4": "S",
+    "5": "S",
+    "6": "M",
+    "7": "M",
+    "8": "L",
     "9": "L",
     "10": "XL",
-    "11": "XXL",
-    "12": "S4"
+    "11": "XL",
+    "12": "XL"
   },
   "AVAILABLE_COLORS": [
     "كما في الصورة",
@@ -286,14 +305,16 @@
     "أحمر",
     "أخضر",
     "زهري",
-    "بنفسجي"
+    "بنفسجي",
+    "أصفر",
+    "برتقالي",
+    "ذهبي"
   ],
   "AVAILABLE_SIZES": [
     "S",
     "M",
     "L",
     "XL",
-    "XXL",
-    "S1"
+    "XXL"
   ]
 }
