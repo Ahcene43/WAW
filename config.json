@@ -13,25 +13,6 @@
       "availableColors": [
         "كما في الصورة"
       ]
-    },
-    "2": {
-      "name": "مودال 2",
-      "price": 5000,
-      "image": "images/modal2.jpg",
-      "description": "عراسي",
-      "availableSizes": [
-        "S",
-        "M",
-        "L",
-        "XL",
-        "XXL"
-      ],
-      "availableColors": [
-        "كما في الصورة",
-        "زهري",
-        "بنفسجي",
-        "برتقالي"
-      ]
     }
   },
   "DELIVERY_PRICES": {
