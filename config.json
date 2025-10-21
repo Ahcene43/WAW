@@ -6,18 +6,13 @@
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761072877263-modle6.jpg",
       "description": "مودالي يومي عملي ",
       "availableSizes": [
-        "S",
         "M",
         "L",
         "XL",
-        "XXL",
         "S1"
       ],
       "availableColors": [
         "كما في الصورة",
-        "أبيض",
-        "أسود",
-        "رمادي",
         "ذهبي، أزرق سماوي"
       ]
     },
@@ -27,17 +22,12 @@
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761071861025-modal6.jpg.webp",
       "description": "في الشباب",
       "availableSizes": [
-        "S",
         "M",
         "L",
-        "XL",
-        "XXL"
+        "XL"
       ],
       "availableColors": [
         "كما في الصورة",
-        "أبيض",
-        "أسود",
-        "رمادي",
         "ذهبي، أزرق سماوي"
       ]
     }
