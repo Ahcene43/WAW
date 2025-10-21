@@ -2,7 +2,7 @@
   "PRODUCTS": {
     "4": {
       "name": "مودال 1",
-      "price": 3300,
+      "price": 5500,
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761072877263-modle6.jpg",
       "description": "مودالي يومي عملي ",
       "availableSizes": [
@@ -18,7 +18,7 @@
     },
     "5": {
       "name": "مودال 2",
-      "price": 2000,
+      "price": 6000,
       "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761071861025-modal6.jpg.webp",
       "description": "في الشباب",
       "availableSizes": [
