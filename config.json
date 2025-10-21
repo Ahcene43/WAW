@@ -18,6 +18,25 @@
         "أسود",
         "رمادي"
       ]
+    },
+    "5": {
+      "name": "مودال 5",
+      "price": 2000,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761049378640-Screenshot_20251006-133907_Facebook.jpg",
+      "description": "في الشباب",
+      "availableSizes": [
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "availableColors": [
+        "كما في الصورة",
+        "أبيض",
+        "أسود",
+        "رمادي"
+      ]
     }
   },
   "DELIVERY_PRICES": {
