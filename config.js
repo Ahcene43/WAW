@@ -108,10 +108,7 @@ let STORE_CONFIG ={
     }
   },
   "DELIVERY_PRICES": {
-    "00 - إختر الولاية": {
-      "home": 0,
-      "desk": 0
-    },
+    
     "01 - أدرار": {
       "home": 1100,
       "desk": 600
