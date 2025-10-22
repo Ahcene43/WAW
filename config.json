@@ -1,42 +1,42 @@
 {
   "PRODUCTS": {
-    "14": {
+    "4": {
       "name": "مودال 1",
-      "price": 4200,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761064146882-modal11.jpg",
-      "description": "مودال فاخر",
+      "price": 5500,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761072877263-modle6.jpg",
+      "description": "مودالي يومي عملي ",
       "availableSizes": [
-        "S",
         "M",
         "L",
-        "S1"
-      ],
-      "availableColors": [
-        "كما في الصورة",
-        "زهري",
-        "بنفسجي"
-      ]
-    },
-    "15": {
-      "name": "مودال 2",
-      "price": 3300,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761063720965-modal15.jpg",
-      "description": "فستان الافراح ",
-      "availableSizes": [
-        "S",
-        "M",
         "XL",
         "S1"
       ],
       "availableColors": [
         "كما في الصورة",
-        "أحمر",
-        "زهري"
+        "ذهبي"
+      ]
+    },
+    "5": {
+      "name": "مودال 2",
+      "price": 6000,
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1761071861025-modal6.jpg.webp",
+      "description": "في الشباب",
+      "availableSizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "availableColors": [
+        "كما في الصورة",
+        "ذهبي"
       ]
     }
   },
   "DELIVERY_PRICES": {
-   
+    "00 - إختر الولاية": {
+      "home": 0,
+      "desk": 0
+    },
     "01 - أدرار": {
       "home": 1100,
       "desk": 600
@@ -271,25 +271,28 @@
     }
   },
   "DISCOUNTS": {
-    "minQuantityForDiscount": 3,
+    "minQuantityForDiscount": 2,
     "discountPerItem": 300
   },
   "STORE_INFO": {
-    "name": "RIHAB12-Shopp",
-    "tagline": "متجر أفخم الملابس ",
+    "name": "Rihab-Shopp",
+    "tagline": "متجر أفخم الملابس للأطفال",
     "phoneNumbers": [
       "0671466489",
       "0551102155"
     ]
   },
   "AGE_SIZES": {
-    "6": "S1",
-    "7": "S",
-    "8": "M",
+    "3": "S",
+    "4": "S",
+    "5": "S",
+    "6": "M",
+    "7": "M",
+    "8": "L",
     "9": "L",
     "10": "XL",
-    "11": "XXL",
-    "12": "S4"
+    "11": "XL",
+    "12": "XL"
   },
   "AVAILABLE_COLORS": [
     "كما في الصورة",
@@ -300,14 +303,16 @@
     "أحمر",
     "أخضر",
     "زهري",
-    "بنفسجي"
+    "بنفسجي",
+    "أصفر",
+    "برتقالي",
+    "ذهبي"
   ],
   "AVAILABLE_SIZES": [
     "S",
     "M",
     "L",
     "XL",
-    "XXL",
-    "S1"
+    "XXL"
   ]
 }
