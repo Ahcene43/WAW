@@ -17,7 +17,7 @@ let STORE_CONFIG = {
     "2": {
       "name": "مودال 14",
       "price": 5200,
-      "image": "https://raw.githubusercontent.com/Ahcene43/WER/main/images/1760731352265-modal6.jpg",
+      "image": "https://raw.githubusercontent.com/Ahcene43/WAW/main/images/1760731352265-modal6.jpg",
       "description": "مودال شتوي فاخر",
       "availableSizes": [
         "S",
@@ -321,7 +321,7 @@ async function loadRemoteConfig(tokenConfig = null, repo = null) {
       configUrl = `https://raw.githubusercontent.com/${tokenConfig.username}/${repo}/${tokenConfig.branch || 'main'}/config.json?t=${Date.now()}`;
     } else {
       // استخدام الرابط الافتراضي
-      configUrl = 'https://raw.githubusercontent.com/Ahcene43/WER/main/config.json?t=' + Date.now();
+      configUrl = 'https://raw.githubusercontent.com/Ahcene43/WAW/main/config.json?t=' + Date.now();
     }
     
     console.log('🔄 جاري تحميل الإعدادات من:', configUrl);
